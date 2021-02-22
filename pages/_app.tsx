@@ -1,9 +1,15 @@
 import { AppProps } from "next/app";
-// import { BlockchainStore, StoreProvider } from "src/store";
+import { BlockchainStore, StoreProvider } from "src/store";
 import "../styles/globals.css";
 
+const store = new BlockchainStore();
+
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <StoreProvider store={store}>
+      <Component {...pageProps} />
+    </StoreProvider>
+  );
 }
 
 export default MyApp;
